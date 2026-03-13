@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { TaskService } from "./task.service";
-import { responseHandler } from "@/utils/response-handler";
+import { TaskService } from "./task.service.js";
+import { responseHandler } from "@/utils/response-handler.js";
 
 export class TaskController {
   private taskService: TaskService;

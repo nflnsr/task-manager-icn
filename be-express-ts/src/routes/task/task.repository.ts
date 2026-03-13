@@ -1,6 +1,6 @@
-import { Task } from "@/generated/prisma/client";
-import { prisma } from "@/libs/prisma";
-import { CreateTaskDTO } from "./task.dto";
+import { Task } from "@/generated/prisma/client.js";
+import { prisma } from "@/libs/prisma.js";
+import { CreateTaskDTO } from "./task.dto.js";
 
 export class TaskRepository {
   async getAllTask() {

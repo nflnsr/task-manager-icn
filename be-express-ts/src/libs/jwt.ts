@@ -1,4 +1,4 @@
-import { User } from "@/generated/prisma/client";
+import { User } from "@/generated/prisma/client.js";
 import jwt, { JwtPayload } from "jsonwebtoken";
 
 const verifyAccessToken = (token: string) => {

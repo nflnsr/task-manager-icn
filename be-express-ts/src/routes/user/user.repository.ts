@@ -1,6 +1,6 @@
-import { User } from "@/generated/prisma/client";
-import { prisma } from "@/libs/prisma";
-import { CreateUserDTO } from "./user.dto";
+import { User } from "@/generated/prisma/client.js";
+import { prisma } from "@/libs/prisma.js";
+import { CreateUserDTO } from "./user.dto.js";
 
 export class UserRepository {
   async getAllUser() {

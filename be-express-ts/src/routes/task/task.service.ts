@@ -1,6 +1,6 @@
-import { Task } from "@/generated/prisma/client";
-import { TaskRepository } from "./task.repository";
-import { CreateTaskDTO } from "./task.dto";
+import { Task } from "@/generated/prisma/client.js";
+import { TaskRepository } from "./task.repository.js";
+import { CreateTaskDTO } from "./task.dto.js";
 
 export class TaskService {
   private taskRepository: TaskRepository;

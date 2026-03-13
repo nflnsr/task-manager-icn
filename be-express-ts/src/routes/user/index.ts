@@ -1,9 +1,9 @@
 import { Router, Request, Response } from "express";
-import { UserRepository } from "./user.repository";
-import { UserService } from "./user.service";
-import { UserController } from "./user.controller";
-import { validate } from "@/middlewares/validate";
-import { createUserSchema, loginSchema, updateUserSchema } from "./user.dto";
+import { UserRepository } from "./user.repository.js";
+import { UserService } from "./user.service.js";
+import { UserController } from "./user.controller.js";
+import { validate } from "@/middlewares/validate.js";
+import { createUserSchema, loginSchema, updateUserSchema } from "./user.dto.js";
 
 const router = Router();
 

@@ -1,4 +1,4 @@
-import { ResponseCategory } from "./response-handler";
+import { ResponseCategory } from "./response-handler.js";
 
 class HttpException extends Error {
   errorCode: number;

@@ -1,10 +1,10 @@
 import { Router, Request, Response } from "express";
-import { TaskRepository } from "./task.repository";
-import { TaskService } from "./task.service";
-import { TaskController } from "./task.controller";
-import { validate } from "@/middlewares/validate";
-import { createTaskSchema, updateTaskSchema } from "./task.dto";
-import { authenticate } from "@/middlewares/authenticate";
+import { TaskRepository } from "./task.repository.js";
+import { TaskService } from "./task.service.js";
+import { TaskController } from "./task.controller.js";
+import { validate } from "@/middlewares/validate.js";
+import { createTaskSchema, updateTaskSchema } from "./task.dto.js";
+import { authenticate } from "@/middlewares/authenticate.js";
 
 const router = Router();
 

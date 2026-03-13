@@ -1,5 +1,5 @@
-import { User } from "@/generated/prisma/client";
-import { verifyAccessToken } from "@/libs/jwt";
+import { User } from "@/generated/prisma/client.js";
+import { verifyAccessToken } from "@/libs/jwt.js";
 import { Request, Response, NextFunction } from "express";
 
 declare module "express" {

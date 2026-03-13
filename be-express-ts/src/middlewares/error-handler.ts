@@ -1,12 +1,12 @@
-import { HttpException } from "@/utils/http-exeption";
+import { HttpException } from "@/utils/http-exeption.js";
 import { ErrorRequestHandler, NextFunction, Request, Response } from "express";
-import { responseHandler } from "@/utils/response-handler";
+import { responseHandler } from "@/utils/response-handler.js";
 import {
   PrismaClientKnownRequestError,
   PrismaClientUnknownRequestError,
   PrismaClientValidationError,
-} from "@/generated/prisma/internal/prismaNamespace";
-import { PrismaError, prismaHttpStatus, prismaKnownErrorMsg } from "@/libs/prisma";
+} from "@/generated/prisma/internal/prismaNamespace.js";
+import { PrismaError, prismaHttpStatus, prismaKnownErrorMsg } from "@/libs/prisma.js";
 
 const errorHandler: ErrorRequestHandler = (err: Error, req: Request, res: Response, next: NextFunction) => {
   console.log("Error caught by middleware:", err as PrismaClientKnownRequestError);

@@ -1,4 +1,4 @@
-import { responseHandler } from "@/utils/response-handler";
+import { responseHandler } from "@/utils/response-handler.js";
 import { Request, Response, NextFunction, RequestHandler } from "express";
 import { ZodError, ZodType } from "zod";
 

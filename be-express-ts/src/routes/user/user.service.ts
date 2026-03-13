@@ -1,9 +1,9 @@
-import { User } from "@/generated/prisma/client";
-import { UserRepository } from "./user.repository";
-import { HttpException } from "@/utils/http-exeption";
-import { comparePassword, hashPassword } from "@/libs/bcrypt";
-import { generateAccessToken, generateRefreshToken } from "@/libs/jwt";
-import { CreateUserDTO, LoginDTO } from "./user.dto";
+import { User } from "@/generated/prisma/client.js";
+import { UserRepository } from "./user.repository.js";
+import { HttpException } from "@/utils/http-exeption.js";
+import { comparePassword, hashPassword } from "@/libs/bcrypt.js";
+import { generateAccessToken, generateRefreshToken } from "@/libs/jwt.js";
+import { CreateUserDTO, LoginDTO } from "./user.dto.js";
 
 export class UserService {
   private userRepository: UserRepository;
