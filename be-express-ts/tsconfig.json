@@ -8,8 +8,6 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "module": "esnext",
-    "moduleResolution": "bundler",
     "noImplicitAny": true,
     "strict": true,
   },
