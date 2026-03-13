@@ -1,0 +1,35 @@
+import { Task } from "@/generated/prisma/client";
+import { TaskRepository } from "./task.repository";
+import { CreateTaskDTO } from "./task.dto";
+
+export class TaskService {
+  private taskRepository: TaskRepository;
+
+  constructor(taskRepository: TaskRepository) {
+    this.taskRepository = taskRepository;
+  }
+
+  async getAllTask() {
+    return await this.taskRepository.getAllTask();
+  }
+
+  async getMyTask(userId: string) {
+    return await this.taskRepository.getMyTask(userId);
+  }
+
+  async getTaskById(id: number) {
+    return await this.taskRepository.getTaskById(id);
+  }
+
+  async createTask(body: CreateTaskDTO & { userId: string }) {
+    return await this.taskRepository.createTask(body);
+  }
+
+  async deleteTask(id: number) {
+    return await this.taskRepository.deleteTask(id);
+  }
+
+  async updateTask(id: number, data: Task & { userId: string }) {
+    return await this.taskRepository.updateTask(id, data);
+  }
+}
