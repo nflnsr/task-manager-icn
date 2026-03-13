@@ -1,6 +1,7 @@
 import "dotenv/config";
 import express, { type Application } from "express";
 import http from "http";
+import cookieParser from "cookie-parser";
 import routes from "./routes/index.js";
 import errorHandler from "./middlewares/error-handler.js";
 
@@ -12,6 +13,7 @@ app.get("/health", (req, res) => {
   res.send("healthy");
 });
 
+app.use(cookieParser());
 app.use(routes);
 app.use(errorHandler);
 
