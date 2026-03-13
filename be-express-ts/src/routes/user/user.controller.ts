@@ -22,6 +22,13 @@ export class UserController {
     return responseHandler.success({ res, data: data });
   }
 
+  async getTasksByUserId(req: Request, res: Response) {
+    const params = req.params;
+    const data = await this.userService.getTasksByUserId(params.id as string);
+
+    return responseHandler.success({ res, data: data });
+  }
+
   async createUser(req: Request, res: Response) {
     const body = req.body;
     const result = await this.userService.createUser(body);

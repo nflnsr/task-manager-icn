@@ -30,6 +30,14 @@ export class UserRepository {
     });
   }
 
+  async getTasksByUserId(userId: string) {
+    return await prisma.task.findMany({
+      where: {
+        userId,
+      },
+    });
+  }
+
   async createUser(data: CreateUserDTO) {
     return await prisma.user.create({
       data: data,

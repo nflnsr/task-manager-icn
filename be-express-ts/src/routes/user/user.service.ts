@@ -20,6 +20,10 @@ export class UserService {
     return await this.userRepository.getUserById(id);
   }
 
+  async getTasksByUserId(userId: string) {
+    return await this.userRepository.getTasksByUserId(userId);
+  }
+
   async createUser(body: CreateUserDTO) {
     const { password, ...userData } = body;
     const hashedPassword = await hashPassword(password);
