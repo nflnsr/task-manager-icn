@@ -2,8 +2,9 @@ import { User } from "@/generated/prisma/client.js";
 import { UserRepository } from "./user.repository.js";
 import { HttpException } from "@/utils/http-exeption.js";
 import { comparePassword, hashPassword } from "@/libs/bcrypt.js";
-import { generateAccessToken, generateRefreshToken } from "@/libs/jwt.js";
+import { generateAccessToken, generateRefreshToken, verifyRefreshToken } from "@/libs/jwt.js";
 import { CreateUserDTO, LoginDTO } from "./user.dto.js";
+import { responseHandler } from "@/utils/response-handler.js";
 
 export class UserService {
   private userRepository: UserRepository;
@@ -57,4 +58,20 @@ export class UserService {
 
     return { ...userData, accessToken, refreshToken };
   }
+
+  async refreshToken(refreshToken: string) {
+     if (!refreshToken) {
+        throw new HttpException(401, "client_error", "Refresh token missing");
+      }
+
+      const user = verifyRefreshToken(refreshToken) as User;
+      if (!user) {
+        throw new HttpException(401, "client_error", "Invalid refresh token");
+      }
+      
+      const newAccessToken = generateAccessToken(user);
+      const newRefreshToken = generateRefreshToken(user);
+
+      return { accessToken: newAccessToken, refreshToken: newRefreshToken };
+    }
 }

@@ -65,4 +65,22 @@ export class UserController {
 
     return responseHandler.success({ res, data });
   }
+
+  async refreshToken(req: Request, res: Response) {
+    const refreshToken = req.cookies?.refreshToken;
+    console.log(req?.cookies);
+    const data = await this.userService.refreshToken(refreshToken); 
+
+      res.cookie("refreshToken", data.refreshToken, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "lax",
+        maxAge: 1000 * 60 * 60 * 24 * 7,
+      });
+
+      return responseHandler.success({
+        res,
+        data: { accessToken: data.accessToken, refreshToken: data.refreshToken },
+      });
+  }
 }

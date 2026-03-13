@@ -9,16 +9,20 @@ const verifyAccessToken = (token: string) => {
   }
 };
 
-const generateAccessToken = (data: Omit<User, "password">) => {
+const generateAccessToken = (data: Omit<User, "password"> & { iat?: number; exp?: number }) => {
   const payload = { ...data };
+  delete payload.iat;
+  delete payload.exp;
 
   return jwt.sign(payload, String(process.env.JWT_ACCESS_SECRET), {
     expiresIn: "3600s",
   });
 };
 
-const generateRefreshToken = (data: Omit<User, "password">) => {
+const generateRefreshToken = (data: Omit<User, "password"> & { iat?: number; exp?: number }) => {
   const payload = { ...data };
+  delete payload.iat;
+  delete payload.exp;
 
   return jwt.sign(payload, String(process.env.JWT_REFRESH_SECRET), {
     expiresIn: "68400s",

@@ -31,4 +31,6 @@ router.post("/login", validate(loginSchema), (req: Request, res: Response) =>
   controller.login(req, res),
 );
 
+router.post("/refresh-token", (req: Request, res: Response) => controller.refreshToken(req, res));
+
 export default router;
