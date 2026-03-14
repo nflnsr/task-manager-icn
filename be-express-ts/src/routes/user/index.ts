@@ -13,6 +13,8 @@ const controller = new UserController(service);
 
 router.get("/", (req, res) => controller.getAllUser(req, res));
 
+router.get("/me", (req, res) => controller.getMyProfile(req, res));
+
 router.get("/:id", (req: Request, res: Response) => controller.getUserById(req, res));
 
 router.get("/:id/tasks", (req: Request, res: Response) => controller.getTasksByUserId(req, res));

@@ -4,7 +4,6 @@ import { HttpException } from "@/utils/http-exeption.js";
 import { comparePassword, hashPassword } from "@/libs/bcrypt.js";
 import { generateAccessToken, generateRefreshToken, verifyRefreshToken } from "@/libs/jwt.js";
 import { CreateUserDTO, LoginDTO } from "./user.dto.js";
-import { responseHandler } from "@/utils/response-handler.js";
 
 export class UserService {
   private userRepository: UserRepository;

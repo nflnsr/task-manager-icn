@@ -15,6 +15,13 @@ export class UserController {
     return responseHandler.success({ res, data: data });
   }
 
+  async getMyProfile(req: Request, res: Response) {
+    const userId = req.user?.id as string;
+    const data = await this.userService.getUserById(userId);
+    
+    return responseHandler.success({ res, data: data });
+  }
+
   async getUserById(req: Request, res: Response) {
     const params = req.params;
     const data = await this.userService.getUserById(params.id as string);
@@ -68,7 +75,6 @@ export class UserController {
 
   async refreshToken(req: Request, res: Response) {
     const refreshToken = req.cookies?.refreshToken;
-    console.log(req?.cookies);
     const data = await this.userService.refreshToken(refreshToken); 
 
       res.cookie("refreshToken", data.refreshToken, {
