@@ -4,6 +4,7 @@ import { UserService } from "./user.service.js";
 import { UserController } from "./user.controller.js";
 import { validate } from "@/middlewares/validate.js";
 import { createUserSchema, loginSchema, updateUserSchema } from "./user.dto.js";
+import { authenticate } from "@/middlewares/authenticate.js";
 
 const router = Router();
 
@@ -13,7 +14,7 @@ const controller = new UserController(service);
 
 router.get("/", (req, res) => controller.getAllUser(req, res));
 
-router.get("/me", (req, res) => controller.getMyProfile(req, res));
+router.get("/me", authenticate, (req, res) => controller.getMyProfile(req, res));
 
 router.get("/:id", (req: Request, res: Response) => controller.getUserById(req, res));
 
