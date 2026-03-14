@@ -17,7 +17,11 @@ export class TaskController {
 
   async getMyTask(req: Request, res: Response) {
     const userId = req.user?.id as string;
-    const data = await this.taskService.getMyTask(userId);
+    const query = req.query;
+    const filters = {
+      completed: query?.completed as string | undefined,
+    };
+    const data = await this.taskService.getMyTask(userId, filters);
 
     return responseHandler.success({ res, data: data });
   }
@@ -25,10 +29,10 @@ export class TaskController {
   async getTaskById(req: Request, res: Response) {
     const id = parseInt(req.params.id as string);
     const data = await this.taskService.getTaskById(id);
-    
+
     return responseHandler.success({ res, data: data });
   }
-  
+
   async createTask(req: Request, res: Response) {
     const userId = req.user?.id as string;
     const body = req.body;

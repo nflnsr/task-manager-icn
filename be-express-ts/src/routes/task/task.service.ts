@@ -13,8 +13,8 @@ export class TaskService {
     return await this.taskRepository.getAllTask();
   }
 
-  async getMyTask(userId: string) {
-    return await this.taskRepository.getMyTask(userId);
+  async getMyTask(userId: string, filters?: { completed?: string }) {
+    return await this.taskRepository.getMyTask(userId, filters);
   }
 
   async getTaskById(id: number) {
