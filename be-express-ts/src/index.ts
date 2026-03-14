@@ -24,7 +24,7 @@ app.get("/health", (req, res) => {
 });
 
 app.use(cookieParser());
-app.use(routes);
+app.use("/api", routes);
 app.use(errorHandler);
 
 const server = http.createServer(app);
