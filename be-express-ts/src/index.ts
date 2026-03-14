@@ -1,11 +1,21 @@
 import "dotenv/config";
 import express, { type Application } from "express";
 import http from "http";
+import cors from "cors";
 import cookieParser from "cookie-parser";
 import routes from "./routes/index.js";
 import errorHandler from "./middlewares/error-handler.js";
 
 const app: Application = express();
+
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    credentials: true,
+    methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
+    allowedHeaders: ["Content-Type", "Authorization", "Accept", "Origin", "X-Requested-With"],
+  }),
+);
 
 app.use(express.json());
 
