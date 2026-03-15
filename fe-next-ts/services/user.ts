@@ -39,7 +39,7 @@ const useGetProfile = () => {
     onSettled: () => {
       setIsLoading?.(false);
     },
-    retry: 2,
+    retry: false,
     refetchOnWindowFocus: false,
     staleTime: 10 * 60 * 1000, // 10 minutes
   });
