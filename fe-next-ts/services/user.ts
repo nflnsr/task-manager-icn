@@ -57,7 +57,7 @@ const usePostLogin = (params?: UseMutationOptions<any, any, LoginFormType>) => {
       return data;
     },
     onSuccess: (data) => {
-      // setRefreshToken(data.data.refreshToken);
+      setRefreshToken(data.data.refreshToken);
       setAccessToken(data.data.accessToken);
       setUser(data.data.user);
       setIsLoggedIn(true);

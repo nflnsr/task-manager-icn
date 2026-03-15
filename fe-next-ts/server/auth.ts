@@ -23,4 +23,18 @@ async function clearRefreshToken() {
   cookieStore.delete("refreshToken");
 }
 
-export { getRefreshToken, setRefreshToken, clearRefreshToken };
+async function hitRefreshToken() {
+  const refreshToken = await getRefreshToken();
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/users/refresh-token`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: `refreshToken=${refreshToken}`,
+    },
+  });
+
+  return response.json();
+}
+
+
+export { getRefreshToken, setRefreshToken, clearRefreshToken, hitRefreshToken };
