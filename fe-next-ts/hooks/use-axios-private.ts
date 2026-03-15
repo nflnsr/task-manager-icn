@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { axiosPrivateInstance, axiosPrivateInstanceSecond } from "@/lib/axios";
 import { usePathname, useRouter } from "next/navigation";
 import { useAuthStore } from "@/stores/auth";
-import { setRefreshToken } from "@/server/auth";
+// import { setRefreshToken } from "@/server/auth";
 
 export function useAxiosPrivate() {
   const { accessToken, setAccessToken, setUser, setIsLoggedIn, setIsLoading } =
@@ -40,7 +40,7 @@ export function useAxiosPrivate() {
               { withCredentials: true },
             );
             setAccessToken(data.data.accessToken);
-            setRefreshToken(data.data.refreshToken);
+            // setRefreshToken(data.data.refreshToken);
             setIsLoggedIn(true);
             setUser(data.data.user);
             prevRequest.headers["Authorization"] =
