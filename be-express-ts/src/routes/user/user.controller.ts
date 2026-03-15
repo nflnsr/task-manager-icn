@@ -18,7 +18,7 @@ export class UserController {
   async getMyProfile(req: Request, res: Response) {
     const userId = req.user?.id as string;
     const data = await this.userService.getUserById(userId);
-    
+
     return responseHandler.success({ res, data: data });
   }
 
@@ -60,7 +60,7 @@ export class UserController {
 
   async login(req: Request, res: Response) {
     const body = req.body;
-    const data = await this.userService.login(body)
+    const data = await this.userService.login(body);
 
     res.cookie("refreshToken", data.refreshToken, {
       httpOnly: true,
@@ -75,18 +75,19 @@ export class UserController {
 
   async refreshToken(req: Request, res: Response) {
     const refreshToken = req.cookies?.refreshToken;
-    const data = await this.userService.refreshToken(refreshToken); 
+    const data = await this.userService.refreshToken(refreshToken);
 
-      res.cookie("refreshToken", data.refreshToken, {
-        httpOnly: true,
-        secure: true,
-        sameSite: "lax",
-        maxAge: 1000 * 60 * 60 * 24 * 7,
-      });
+    res.cookie("refreshToken", data.refreshToken, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+      path: "/",
+      maxAge: 1000 * 60 * 60 * 24 * 7,
+    });
 
-      return responseHandler.success({
-        res,
-        data: { accessToken: data.accessToken, refreshToken: data.refreshToken },
-      });
+    return responseHandler.success({
+      res,
+      data: { accessToken: data.accessToken, refreshToken: data.refreshToken },
+    });
   }
 }
