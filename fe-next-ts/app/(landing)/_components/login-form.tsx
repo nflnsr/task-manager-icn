@@ -33,29 +33,22 @@ export function LoginForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-4 max-w-80 pt-10">
         <FormField
           control={form.control}
           name="email"
           render={() => {
-            const hasError = !!form.formState.errors.email;
             return (
-              <FormItem className="gap-1">
-                <fieldset
-                  className={`flex h-fit flex-col rounded-lg border-2 shadow-cyan-100 focus-within:border-cyan-300 focus-within:shadow-md ${hasError ? "border-red-500" : "border-cyan-400"}`}
-                >
-                  <legend className="mx-5 px-1 text-sm text-cyan-400">
-                    <FormLabel>Your Email / Username</FormLabel>
-                  </legend>
-                  <FormControl>
-                    <Input
-                      type="email"
-                      {...form.register("email")}
-                      className="ring-none border-none pb-2 outline-none autofill:bg-yellow-200 focus-visible:ring-0 [&::-webkit-autofill]:bg-blue-900"
-                      autoComplete="email"
-                    />
-                  </FormControl>
-                </fieldset>
+              <FormItem className="gap-2">
+                <FormLabel>Your Email / Username</FormLabel>
+                <FormControl>
+                  <Input
+                    type="email"
+                    {...form.register("email")}
+                    className="ring-none border-2 border-gray-500 pb-1 outline-none autofill:bg-yellow-200 focus-visible:ring-0 [&::-webkit-autofill]:bg-blue-900"
+                    autoComplete="email"
+                  />
+                </FormControl>
                 <FormDescription />
                 <FormMessage>{form.formState.errors.email?.message}</FormMessage>
               </FormItem>
@@ -66,24 +59,17 @@ export function LoginForm() {
           control={form.control}
           name="password"
           render={() => {
-            const hasError = !!form.formState.errors.password;
             return (
-              <FormItem className="gap-1">
-                <fieldset
-                  className={`flex h-fit flex-col rounded-lg border-2 shadow-cyan-100 focus-within:border-cyan-300 focus-within:shadow-md ${hasError ? "border-red-500" : "border-cyan-400"}`}
-                >
-                  <legend className="mx-5 px-1 text-sm text-cyan-400">
-                    <FormLabel>Enter Password</FormLabel>
-                  </legend>
-                  <FormControl>
-                    <Input
-                      type="password"
-                      {...form.register("password")}
-                      className="ring-none border-none pb-2 outline-none autofill:bg-cyan-100 focus-visible:ring-0 [&::-webkit-autofill]:bg-blue-900"
-                      autoComplete="current-password"
-                    />
-                  </FormControl>
-                </fieldset>
+              <FormItem className="gap-2">
+                <FormLabel>Enter Password</FormLabel>
+                <FormControl>
+                  <Input
+                    type="password"
+                    {...form.register("password")}
+                    className="ring-none border-2 border-gray-500 pb-1 outline-none autofill:bg-cyan-100 focus-visible:ring-0 [&::-webkit-autofill]:bg-blue-900"
+                    autoComplete="current-password"
+                  />
+                </FormControl>
                 <FormDescription />
                 <FormMessage>{form.formState.errors.password?.message}</FormMessage>
               </FormItem>

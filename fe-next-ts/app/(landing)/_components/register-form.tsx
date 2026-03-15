@@ -34,29 +34,22 @@ export function RegisterForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-1.5 gap-y-20">
-        <div className="flex w-full gap-x-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-1.5 max-w-80">
+        <div className="flex w-full">
           <FormField
             control={form.control}
             name="name"
             render={() => {
-              const hasError = !!form.formState.errors.name;
               return (
-                <FormItem className="w-full gap-0.5">
-                  <fieldset
-                    className={`flex h-fit flex-col rounded-lg border-2 shadow-cyan-100 focus-within:border-cyan-300 focus-within:shadow-md ${hasError ? "border-red-500" : "border-cyan-400"}`}
-                  >
-                    <legend className="mx-5 px-1 text-sm text-cyan-400">
-                      <FormLabel>Name</FormLabel>
-                    </legend>
-                    <FormControl>
-                      <Input
-                        type="text"
-                        {...form.register("name")}
-                        className="ring-none border-none pb-3 outline-none autofill:bg-yellow-200 focus-visible:ring-0 [&::-webkit-autofill]:bg-blue-900"
-                      />
-                    </FormControl>
-                  </fieldset>
+                <FormItem className="w-full gap-1.5">
+                  <FormLabel>Name</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="text"
+                      {...form.register("name")}
+                      className="ring-none border-2 border-gray-500 pb-1 outline-none autofill:bg-yellow-200 focus-visible:ring-0 [&::-webkit-autofill]:bg-blue-900"
+                    />
+                  </FormControl>
                   <FormDescription />
                   <FormMessage>{form.formState.errors.name?.message}</FormMessage>
                 </FormItem>
@@ -69,23 +62,16 @@ export function RegisterForm() {
           control={form.control}
           name="email"
           render={() => {
-            const hasError = !!form.formState.errors.email;
             return (
-              <FormItem className="w-full gap-0.5">
-                <fieldset
-                  className={`flex h-fit flex-col rounded-lg border-2 shadow-cyan-100 focus-within:border-cyan-300 focus-within:shadow-md ${hasError ? "border-red-500" : "border-cyan-400"}`}
-                >
-                  <legend className="mx-5 px-1 text-sm text-cyan-400">
-                    <FormLabel>Email</FormLabel>
-                  </legend>
-                  <FormControl>
-                    <Input
-                      type="text"
-                      {...form.register("email")}
-                      className="ring-none border-none pb-3 outline-none autofill:bg-yellow-200 focus-visible:ring-0 [&::-webkit-autofill]:bg-blue-900"
-                    />
-                  </FormControl>
-                </fieldset>
+              <FormItem className="w-full gap-1.5">
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input
+                    type="text"
+                    {...form.register("email")}
+                    className="ring-none border-2 border-gray-500 pb-1 outline-none autofill:bg-yellow-200 focus-visible:ring-0 [&::-webkit-autofill]:bg-blue-900"
+                  />
+                </FormControl>
                 <FormDescription />
                 <FormMessage>{form.formState.errors.email?.message}</FormMessage>
               </FormItem>
@@ -98,25 +84,18 @@ export function RegisterForm() {
             control={form.control}
             name="password"
             render={() => {
-              const hasError = !!form.formState.errors.password;
               return (
-                <FormItem className="w-full gap-0.5">
-                  <fieldset
-                    className={`flex h-fit flex-col rounded-lg border-2 shadow-cyan-100 focus-within:border-cyan-300 focus-within:shadow-md ${hasError ? "border-red-500" : "border-cyan-400"}`}
-                  >
-                    <legend className="mx-5 px-1 text-sm text-cyan-400">
-                      <FormLabel>Password</FormLabel>
-                    </legend>
-                    <FormControl>
-                      <Input
-                        type="text"
-                        {...form.register("password")}
-                        className="ring-none border-none pb-3 outline-none autofill:bg-yellow-200 focus-visible:ring-0 [&::-webkit-autofill]:bg-blue-900"
-                      />
-                    </FormControl>
-                  </fieldset>
+                <FormItem className="w-full gap-1.5">
+                  <FormLabel>Password</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="password"
+                      {...form.register("password")}
+                      className="ring-none border-2 border-gray-500 pb-1 outline-none autofill:bg-yellow-200 focus-visible:ring-0 [&::-webkit-autofill]:bg-blue-900"
+                    />
+                  </FormControl>
                   <FormDescription />
-                  <FormMessage>{form.formState.errors.password?.message}</FormMessage>
+                  <FormMessage className="-pt-2">{form.formState.errors.password?.message}</FormMessage>
                 </FormItem>
               );
             }}
