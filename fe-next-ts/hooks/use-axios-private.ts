@@ -5,8 +5,7 @@ import { useAuthStore } from "@/stores/auth";
 import { setRefreshToken, hitRefreshToken } from "@/server/auth";
 
 export function useAxiosPrivate() {
-  const { accessToken, setAccessToken, setUser, setIsLoggedIn, setIsLoading } =
-    useAuthStore();
+  const { accessToken, setAccessToken, setUser, setIsLoggedIn, setIsLoading } = useAuthStore();
   const router = useRouter();
   const pathname = usePathname();
 
@@ -28,8 +27,7 @@ export function useAxiosPrivate() {
         const prevRequest = error?.config;
         console.log("Error responsenya:", error?.response?.status);
         if (
-          (error?.response?.status === 401 ||
-            error?.response?.status === 403) &&
+          (error?.response?.status === 401 || error?.response?.status === 403) &&
           !prevRequest?.sent
         ) {
           // setIsLoading?.(true);
@@ -39,13 +37,13 @@ export function useAxiosPrivate() {
             //   {},
             //   { withCredentials: true },
             // );
+            setIsLoading?.(true);
             const data = await hitRefreshToken();
             setAccessToken(data.data.accessToken);
             setRefreshToken(data.data.refreshToken);
             setIsLoggedIn(true);
             setUser(data.data.user);
-            prevRequest.headers["Authorization"] =
-              `Bearer ${data.data.accessToken}`;
+            prevRequest.headers["Authorization"] = `Bearer ${data.data.accessToken}`;
             prevRequest.sent = true;
             setIsLoading?.(false);
             return axiosPrivateInstance(prevRequest);
